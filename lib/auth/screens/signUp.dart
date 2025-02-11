@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../homePage.dart';
 import '../components/auth_textfield.dart';
+import '../components/divider.dart';
 import '../components/myButton.dart';
 import '../components/showSnackBar.dart';
 import '../components/squareTile.dart';
@@ -98,12 +99,9 @@ class _SignUpState extends State<SignUp> {
               text: "Sign Up",
               onPressed: () => signUp(context),  // Call signUp method
             ),
-            const SizedBox(height: 35),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 200.0),
-              child: Divider(color: Colors.black, thickness: 1),
-            ),
-            const SizedBox(height: 35),
+            const SizedBox(height: 50),
+            DividerText(thickness: 0.8, color: Colors.grey),
+            const SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

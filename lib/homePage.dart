@@ -1,3 +1,6 @@
+import 'package:ecommerce_app/auth/components/myButton.dart';
+import 'package:ecommerce_app/auth/screens/login.dart';
+import 'package:ecommerce_app/auth/services/authService.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -34,7 +37,11 @@ class _HomePageState extends State<HomePage> {
                   hintText: "Search "
               ),
             ),
-          )
+          ),
+          MyButton(text: "logOut", onPressed: ()async{
+            await AuthService().logOut();
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Login()));
+          })
         ],
       ),
     );

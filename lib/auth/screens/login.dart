@@ -1,8 +1,12 @@
 import 'package:ecommerce_app/auth/components/auth_textfield.dart';
+import 'package:ecommerce_app/auth/components/divider.dart';
 import 'package:ecommerce_app/auth/screens/signUp.dart';
+import 'package:ecommerce_app/auth/services/authService.dart';
 import 'package:flutter/material.dart';
 
+import '../../homePage.dart';
 import '../components/myButton.dart';
+import '../components/showSnackBar.dart';
 import '../components/squareTile.dart';
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -43,14 +47,35 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
     _controller.reset();
     _controller.forward();
   }
-
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  bool isLoading = false;
   @override
   void dispose() {
     _controller.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  //login Function
+  void loginUser(BuildContext context) async {
+    String res = await AuthService().loginUser(
+      email: _emailController.text,
+      password: _passwordController.text,
+      context: context, // Pass context here
+    );
+    if (res == "success") {
+      setState(() {
+        isLoading = true;
+      });
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
+    } else {
+      setState(() {
+        isLoading = false;
+      });
+      showSnackBar(context, res);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -146,11 +171,13 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
                     const SizedBox(height: 5),
                     GestureDetector(
                       child: MyButton(
-                        onPressed: (){},
+                        onPressed: ()=>loginUser(context),
                         text: "Login",
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 15),
+                     DividerText(thickness: 0.8, color: Colors.grey),
+                    const SizedBox(height: 15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -159,7 +186,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
                         SquareTile(imagePath: "lib/auth/icons/apple.png",)
                       ],
                     ),
-                    SizedBox(height: 8,),
+                    SizedBox(height: 5,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

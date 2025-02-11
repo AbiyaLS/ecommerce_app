@@ -16,24 +16,48 @@ class AuthService {
   }) async {
     String res = "Some error occurred";
     try {
-      // Creating the user using Firebase Auth
-      UserCredential credential = await _auth.createUserWithEmailAndPassword(
+      if(name.isNotEmpty || email.isNotEmpty || password.isNotEmpty ){
+        UserCredential credential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-
-      // Adding user to Firestore
       await _firestore.collection("users").doc(credential.user!.uid).set({
         'name': name,
         'email': email,
         'uid': credential.user!.uid,
       });
 
-      res = "success";
+      res = "success";}
     } catch (e) {
       // Handle FirebaseAuthException
-      print(e.toString());
+    return e.toString();
     }
     return res;
   }
+  // Login with email and password
+  Future<String> loginUser({
+  required String email,
+  required String password,
+  required BuildContext context,
+  })async{
+  String res = "Some error occurred";
+   try{
+      if(email.isNotEmpty || password.isNotEmpty){
+      await _auth.signInWithEmailAndPassword(
+          email: email,
+          password: password);
+      res = "success";
+      }else{
+      res ="Please enter all field";
+      }
+   }catch(e){
+    return e.toString();
+   }
+  return res;
+  }
+
+  //LOGOUT FUNCTION
+Future<void> logOut() async{
+    await _auth.signOut();
+}
 }
