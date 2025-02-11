@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/auth/components/auth_textfield.dart';
 import 'package:ecommerce_app/auth/components/divider.dart';
+import 'package:ecommerce_app/auth/components/forget_password/forgot_password.dart';
 import 'package:ecommerce_app/auth/screens/signUp.dart';
 import 'package:ecommerce_app/auth/services/authService.dart';
 import 'package:flutter/material.dart';
@@ -98,7 +99,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
           Positioned(
             bottom: 0,
             child: Container(
-              height: screenHeight/ 1.8,
+              height: screenHeight/ 1.7,
               width: screenWidth,
               decoration: BoxDecoration(
                 boxShadow: [
@@ -150,24 +151,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
                       obscureText: true,
                     ),
                     // SizedBox(height: 10),
-                    FadeTransition(
-                      opacity: _fadeAnimation2,
-                      child: SlideTransition(
-                        position: _slideAnimation2,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                "Forget Password?",
-                                style: TextStyle(color: Color(0xFF3D3BF3)),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                   ForgotPassword(),
                     const SizedBox(height: 5),
                     GestureDetector(
                       child: MyButton(
@@ -175,9 +159,9 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
                         text: "Login",
                       ),
                     ),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 30),
                      DividerText(thickness: 0.8, color: Colors.grey),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 25),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

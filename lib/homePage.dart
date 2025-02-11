@@ -41,6 +41,10 @@ class _HomePageState extends State<HomePage> {
           MyButton(text: "logOut", onPressed: ()async{
             await AuthService().logOut();
             Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Login()));
+          }),
+          SizedBox(height: 20,),
+          MyButton(text: "Back to login", onPressed: (){
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Login()));
           })
         ],
       ),
