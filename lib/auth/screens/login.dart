@@ -4,8 +4,7 @@ import 'package:ecommerce_app/auth/components/forget_password/forgot_password.da
 import 'package:ecommerce_app/auth/screens/signUp.dart';
 import 'package:ecommerce_app/auth/services/authService.dart';
 import 'package:flutter/material.dart';
-
-import '../../homePage.dart';
+import '../../Home/screens/homePage.dart';
 import '../components/myButton.dart';
 import '../components/showSnackBar.dart';
 import '../components/squareTile.dart';

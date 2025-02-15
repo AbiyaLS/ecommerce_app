@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/auth/screens/login.dart';
 import 'package:flutter/material.dart';
-
-import '../../homePage.dart';
+import '../../Home/screens/homePage.dart';
 import '../components/auth_textfield.dart';
 import '../components/divider.dart';
 import '../components/myButton.dart';
