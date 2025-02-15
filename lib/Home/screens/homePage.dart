@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widget/home_appbar.dart';
 import '../widget/search_bar.dart';
+import '../widget/silder_image.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -25,7 +26,9 @@ class _HomePageState extends State<HomePage> {
               child: HomeAppBar(),
             ),
             SizedBox(height: 10,),
-            CustomSearchBar()
+            CustomSearchBar(),
+            SizedBox(height: 20,),
+            SliderImage(),
           ],
          ),
        ),
