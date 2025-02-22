@@ -1,3 +1,6 @@
+import 'package:ecommerce_app/Home/models/product_model.dart';
+import 'package:ecommerce_app/Home/widget/categories.dart';
+import 'package:ecommerce_app/Home/widget/product_card.dart';
 import 'package:flutter/material.dart';
 import '../widget/home_appbar.dart';
 import '../widget/search_bar.dart';
@@ -29,12 +32,33 @@ class _HomePageState extends State<HomePage> {
             CustomSearchBar(),
             SizedBox(height: 20,),
             SliderImage(),
+            SizedBox(height: 10,),
+            Categories(),
+            SizedBox(height: 10,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Special For You",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),),
+                Text("See all",style: TextStyle(color: Colors.grey,fontSize: 18),)
+              ],
+            ),
+            // SizedBox(height: 10,),
+            GridView.builder(
+             physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                childAspectRatio: 0.78,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20),
+                itemCount: product.length,
+                itemBuilder: (context,index){
+               return ProductCard(product: product[index]);
+                })
           ],
          ),
        ),
      ),
-
-
     );
   }
 }
