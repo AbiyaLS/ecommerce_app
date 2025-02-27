@@ -10,6 +10,7 @@ class Product{
   final String category;
   final String review;
   final int quantity;
+  final double rate;
 
   Product({
     required this.title,
@@ -20,7 +21,8 @@ class Product{
     required this.color,
     required this.category,
     required this.review,
-    required this.quantity
+    required this.quantity,
+    required this.rate
 });
 }
  final List<Product> product = [
@@ -38,7 +40,7 @@ class Product{
        ],
        category: "Electronics",
        review: "(320 Reviews)",
-       quantity: 1),
+       quantity: 1,rate: 4.5),
 
    Product(
        title: "Mens Jacket",
@@ -54,7 +56,7 @@ class Product{
        ],
        category: "Mens Fashion",
        review: "(320 Reviews)",
-       quantity: 1),
+       quantity: 1,rate: 4.5),
    Product(
        title: "Shoe",
        description: '''Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
@@ -69,7 +71,7 @@ class Product{
        ],
        category: "Electronics",
        review: "(320 Reviews)",
-       quantity: 1),
+       quantity: 1,rate: 4.5),
    Product(
        title: "Sweater",
        description: '''Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
@@ -88,5 +90,5 @@ class Product{
        ],
        category: "Electronics",
        review: "(320 Reviews)",
-       quantity: 1)
+       quantity: 1,rate: 4.5)
  ];
